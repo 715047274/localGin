@@ -40,3 +40,5 @@ CREATE INDEX IF NOT EXISTS "index_transfers_from_to_account_id" ON "transfers" (
 -- Comments on columns
 -- COMMENT ON COLUMN "entries"."amount" IS 'can be negative or positive';
 -- COMMENT ON COLUMN "transfers"."amount" IS 'must be positive';
+
+-- INSERT INTO accounts (owner, balance, currency) VALUES ('test', 10, 'USD')
