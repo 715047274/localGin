@@ -1,0 +1,1 @@
+INSERT INTO accounts (owner, balance, currency) VALUES ('kevin', 100, 'cad')
