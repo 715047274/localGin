@@ -24,16 +24,17 @@ func ensureSchema(db *sql.DB) error {
 	if err != nil {
 		return fmt.Errorf("invalid source instance, %w", err)
 	}
-	targetInstance, err := sqlite.WithInstance(db, new(sqlite.Config))
+	driver, err := sqlite.WithInstance(db, &sqlite.Config{})
 	if err != nil {
 		return fmt.Errorf("invalid target sqlite instance, %w", err)
 	}
-	m, err := migrate.NewWithInstance(
-		"httpfs", sourceInstance, "sqlite", targetInstance)
+	m, err := migrate.NewWithDatabaseInstance(
+		"file://./db/migration", "localGin", driver)
 	if err != nil {
 		return fmt.Errorf("failed to initialize migrate instance, %w", err)
 	}
-	err = m.Migrate(schemaVersion)
+	fmt.Println("Up-----------")
+	err = m.Up()
 	if err != nil && err != migrate.ErrNoChange {
 		return err
 	}
