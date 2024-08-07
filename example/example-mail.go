@@ -49,7 +49,7 @@ func Example() {
 // variables to make ExamplePlainAuth compile, without adding
 // unnecessary noise there.
 var (
-	from       = "autotest@dayforce.com"
+	from       = "no-reply@yourdomain.com"
 	msg        = []byte("dummy message")
 	recipients = []string{"k.zhang@ceridian.com"}
 )
